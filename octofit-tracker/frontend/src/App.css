@@ -1,0 +1,107 @@
+/* App.css - Octofit Tracker custom styles */
+
+body {
+  background: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%);
+  color: #22223b;
+}
+
+.navbar {
+  background: linear-gradient(90deg, #6f42c1 0%, #48b1f3 100%);
+  box-shadow: 0 2px 8px rgba(72, 177, 243, 0.08);
+}
+
+.navbar-brand, .navbar-nav .nav-link {
+  color: #fff !important;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.navbar-brand img {
+  height: 40px;
+  margin-right: 12px;
+  vertical-align: middle;
+}
+
+.navbar-nav .nav-link.active, .navbar-nav .nav-link:focus {
+  color: #ffe066 !important;
+  text-shadow: 0 1px 2px #22223b22;
+}
+
+.container {
+  max-width: 950px;
+}
+
+.card {
+  margin-bottom: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(72, 177, 243, 0.07);
+  background: #fff;
+}
+
+.table {
+  background: #f1f3f6;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.table th {
+  background: #6f42c1;
+  color: #fff;
+  border: none;
+}
+
+.table td {
+  background: #f8fafc;
+  color: #22223b;
+  border: none;
+}
+
+h2, h3, h4 {
+  font-weight: 700;
+  color: #6f42c1;
+  letter-spacing: 0.5px;
+}
+
+a, .btn-link {
+  color: #48b1f3;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover, .btn-link:hover {
+  color: #6f42c1;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #6f42c1 0%, #48b1f3 100%);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 2px 4px #6f42c133;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(90deg, #563d7c 0%, #1e90ff 100%);
+  color: #ffe066;
+}
+
+.modal-header {
+  background: #e0e7ff;
+}
+
+.form-label {
+  font-weight: 500;
+  color: #6f42c1;
+}
+
+/* Logo styles */
+.octofit-logo {
+  height: 40px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+/* Favicon styles (for completeness, actual favicon is set in public/index.html) */
+.app-favicon {
+  width: 32px;
+  height: 32px;
+}
