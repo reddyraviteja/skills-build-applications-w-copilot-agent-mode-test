@@ -17,16 +17,30 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import UserViewSet, TeamViewSet, ActivityViewSet, LeaderboardViewSet, WorkoutViewSet, api_root
+import os
+from django.http import JsonResponse
 
-router = DefaultRouter()
-router.register(r'users', UserViewSet, basename='user')
-router.register(r'teams', TeamViewSet, basename='team')
-router.register(r'activities', ActivityViewSet, basename='activity')
-router.register(r'leaderboard', LeaderboardViewSet, basename='leaderboard')
-router.register(r'workouts', WorkoutViewSet, basename='workout')
+
+
+# Custom API root to return API URLs with $CODESPACE_NAME env variable
+def custom_api_root(request):
+    codespace_name = os.environ.get('CODESPACE_NAME', None)
+    scheme = 'https' if request.is_secure() or (codespace_name and request.get_host().startswith(f"{codespace_name}-8000")) else 'http'
+    host = request.get_host()
+    if codespace_name:
+        base_url = f"{scheme}://{codespace_name}-8000.app.github.dev/api/"
+    else:
+        base_url = f"{scheme}://{host}/api/"
+    return JsonResponse({
+        'users': base_url + 'users/',
+        'teams': base_url + 'teams/',
+        'activities': base_url + 'activities/',
+        'leaderboard': base_url + 'leaderboard/',
+        'workouts': base_url + 'workouts/',
+    })
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    path('', api_root, name='api-root'),
+    path('', custom_api_root, name='api-root'),
 ]
